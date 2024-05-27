@@ -1,0 +1,49 @@
+<header>
+    <link rel="stylesheet" href="/assets/css/style1.css">
+</header>
+<main>
+
+  {{#if hasProducts}}
+
+    <h1>Lista de Peliculas</h1>
+
+    <div class="row">
+      {{#each prods}}
+
+        <div class="col-md-4">
+          <div class="card">
+            <img
+              src="{{this.imageUrl}}"
+              class="card-img-top"
+              alt="{{this.title}}"
+            />
+            <div class="card-body ">
+              <h5 class="card-title">{{this.title}} - {{this.status}}</h5>
+              <p class="card-text">{{this.description}}</p>
+              <p class="card-text"><strong>Genero: </strong>{{this.genro}}</p>
+              <a
+                href="edit-product/{{this.id}}?edit=true"
+                class="btn btn-primary"
+              >Editar</a>
+              <br/>
+
+
+              <form action="/admin/delete-product" method="post">
+
+                <input type="hidden" name="ProductId" value="{{this.id}}" />
+                <button class="btn btn-danger mt-3">Borrar</button>
+              </form>
+
+            </div>
+          </div>
+        </div>
+
+      {{/each}}
+    </div>
+  {{else}}
+
+    <h1>No products found!</h1>
+
+  {{/if}}
+
+</main>

@@ -1,0 +1,47 @@
+<header>
+  <link rel="stylesheet" href="assets/css/style.css">
+</header>
+
+<form action="/products" method="post">
+
+                
+                <select name="Filtrar" id="filtrar" class="form-select-sm">
+                <option value="Todos">Todos</option>
+                <option value="Accion">Accion</option>
+                <option value="Comedia">Comedia</option>
+                <option value="Terror">Terror</option>
+                <option value="Suspenso">Suspenso</option>
+                <option value="Documentales">Documentales</option>
+                </select>
+                <button class="btn btn-primary">Filtrar</button>
+  </form>
+
+<main >
+
+  {{#if hasProducts}}
+
+     <h1>Lista de todas las Peliculas</h1>
+
+    <div class="row mt-5" >
+      {{#each prods}}
+
+        <div class="col-md-4" style="width: ;" >
+          <div class="card mt-3">
+            <img src="{{this.imageUrl}}" class="card-img-top" alt="{{this.title}}" />
+            <div class="card-body">
+              <h5 class="card-title">{{this.title}} - {{this.status}}</h5>
+              <p class="card-text">{{this.description}}</p>
+              <p class="card-text"><strong> Genero: </strong> {{this.genro}}</p>
+            </div>
+          </div>
+        </div>
+
+      {{/each}}
+    </div>
+  {{else}}
+
+    <h1>0 Peliculas encontradas</h1>
+
+  {{/if}}
+
+</main>

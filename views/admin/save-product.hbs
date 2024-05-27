@@ -1,0 +1,69 @@
+<main>
+
+  <div class="card">
+    <div class="card-header bg-primary text-light">
+      Formulario de Pelicula
+    </div>
+    <div class="card-body">
+
+      <form method="POST" action="{{#if editMode}}/admin/edit-product{{else}}/admin/add-product{{/if}}">
+        <div class="mb-3">
+          <label for="title" class="form-label">Nombre de la pelicula</label>
+          <input type="text" class="form-control" id="title" name="Title" value="{{#if editMode}}{{product.title}}{{/if}}" required/>
+
+        </div>
+        <div class="mb-3">
+          <label for="image" class="form-label">Image Url:</label>
+          <input type="text" class="form-control" id="image" name="ImageUrl" value="{{#if editMode}}{{product.imageUrl}}{{/if}}" required/>
+
+        </div>
+        <div class="mb-3">
+          <label for="Genro" class="form-label">Genero</label>
+          <select name="Genro" id="genro" class="form-control" required>
+            <option value="">Seleccione un Genero</option>
+             <option value="Accion">Accion</option>
+                <option value="Comedia">Comedia</option>
+                <option value="Terror">Terror</option>
+                <option value="Suspenso">Suspenso</option>
+                <option value="Documentales">Documentales</option>
+          </select>
+        </div>
+
+
+
+       {{#if editMode}}
+<div class="">
+  <label for="Estado">Estado</label>
+  <select name="Status" id="status" class="form-control">
+    <option value="Activa">Activa</option>
+    <option value="Desactivada">Desactivada</option>
+  </select>
+
+
+</div>
+{{else}}
+<input type="hidden" value="Activa" name="Status" />
+
+       {{/if}}
+
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <textarea name="Description" id="description" rows="5" required>{{#if editMode}}{{product.description}}{{/if}}</textarea>
+        </div>
+
+        {{#if editMode}}
+
+          <input type="hidden" name="ProductId" value="{{product.id}}">
+
+        {{/if}}
+
+
+        <button type="submit" class="btn btn-primary">{{#if editMode}}Actualizar{{else}}Agregar{{/if}}</button>
+        
+     
+      </form>
+
+    </div>
+  </div>
+
+</main>
